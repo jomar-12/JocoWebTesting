@@ -1,0 +1,46 @@
+﻿@model JocoWebTesting.Models.Estudiante
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="font-weight-light alert alert-secondary d-inline-block">Detalles del estudiante <span>@Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.detailIcon)</span></h2>
+
+<div class="card mb-3">
+
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3 text-md-right">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-3 text-md-right">
+                @Html.DisplayNameFor(model => model.Profesion.Nombre)
+            </dt>
+
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Profesion.Nombre)
+            </dd>
+
+
+            <dt class="col-sm-3 text-md-right">
+                @Html.DisplayNameFor(model => model.Gpa)
+            </dt>
+
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Gpa)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+<p>
+    <a title="Go back" href="@Url.Action("Index")" class="text-decoration-none">
+        @Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.backIcon)
+    </a>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-sm btn-warning" })
+</p>

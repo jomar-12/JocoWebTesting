@@ -1,0 +1,9 @@
+﻿@model SelectList
+
+@if(Model != null)
+{
+    <div id="cursos">
+        @Html.DropDownList("curso", (SelectList)Model, string.Empty, new { @class = "form-control" })
+        @Html.ValidationMessage("curso", new { @class = "text-danger" })
+    </div>
+}

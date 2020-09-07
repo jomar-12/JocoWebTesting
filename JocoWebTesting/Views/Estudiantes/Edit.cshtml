@@ -1,0 +1,55 @@
+﻿@model JocoWebTesting.Models.Estudiante
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="font-weight-light alert alert-warning d-inline-block">Editar estudiante <span>@Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.editIcon)</span></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gpa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Gpa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gpa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProfesionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ProfesionId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProfesionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group pl-3">
+                <a href="@Url.Action("Index")" class="text-decoration-none">
+                    @Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.backIcon)
+                </a>
+                <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

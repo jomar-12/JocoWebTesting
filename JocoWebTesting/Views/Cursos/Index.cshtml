@@ -1,0 +1,47 @@
+﻿@model IEnumerable<JocoWebTesting.Models.Curso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesion.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Código)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCurso)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profesion.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Código)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCurso)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-warning" })
+                @Html.ActionLink("Students", "Students", new { id = item.Id, nombreCurso = item.NombreCurso, nombreProfesion = item.Profesion.Nombre }, new { @class = "btn btn-sm btn-info" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-secondary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "EstudianteEnCurso";
+    JocoWebTesting.Utilities.EstudianteCursoResult estudianteCursoResult = ViewBag.SaveResult;
+}
+
+@if (ViewBag.NotValidated != null)
+{
+    <div class="alert alert-danger d-inline-block alert-dismissible fade show" role="alert">
+        <strong>Ups...</strong> @ViewBag.NotValidated
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div>
+                    @Html.DropDownList("profesion", (SelectList)ViewBag.Profesiones, string.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessage("profesion", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="cursos">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success rounded-pill" id="btnSubmit" value="submit" />
+            </div>
+        </div>
+        <div id="estudiantes" class="col-md-5 offset-1">
+            @if (estudianteCursoResult != null)
+            {
+                <div class="row">
+                    @if (estudianteCursoResult.EstudiantesAnadidos.Count > 0)
+                    {
+                        <div class="col-md-6">
+                            <div class="card text-white bg-success" style="max-width: 18rem;">
+                                <div class="card-header">Added Students</div>
+                                <div class="card-body">
+                                    <ul>
+                                        @foreach (var item in estudianteCursoResult.EstudiantesAnadidos)
+                                        {
+                                            <li>@item</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-md-6">
+                        @if (estudianteCursoResult.EstudiantesOmitidos.Count > 0)
+                        {
+                            <div class="card text-white bg-warning" style="max-width: 18rem;">
+                                <div class="card-header">Students already in this course</div>
+                                <div class="card-body">
+                                    <ul>
+                                        @foreach (var item in estudianteCursoResult.EstudiantesOmitidos)
+                                        {
+                                            <li>@item</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $('#profesion').change(function () {
+
+                $.get('@Url.Action("GetCursos")', 'profesionId=' + $(this).val(), function (cursosDropDown) {
+                    $('#cursos').replaceWith(cursosDropDown);
+                }).fail(function () {
+                    $('#cursos').children().remove();
+                });
+
+                $.get('@Url.Action("GetEstudiantes")', 'profesionId=' + $(this).val(), function (estudiantesDropDown) {
+                    $('#estudiantes').replaceWith(estudiantesDropDown);
+                }).fail(function () {
+                    $('#estudiantes').children().remove();
+                });
+        });
+
+    </script>
+
+}

@@ -1,0 +1,54 @@
+﻿@model JocoWebTesting.Models.Estudiante
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="alert font-weight-light alert-danger d-inline-block">
+    @Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.warningIcon)
+    ¿Estás seguro que deseas eliminar este record?
+</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesion.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesion.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gpa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gpa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-actions no-color">
+            <a href="@Url.Action("Index")" class="text-decoration-none">
+                @Html.Partial("_svgIcons", JocoWebTesting.Utilities.Icon.backIcon)
+            </a>
+            <input type="submit" value="Borrar" class="btn btn-sm btn-danger" />
+
+        </div>
+    }
+</div>

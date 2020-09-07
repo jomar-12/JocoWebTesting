@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JocoWebTesting", "JocoWebTesting\JocoWebTesting.csproj", "{938C6B10-384E-41A1-B0C0-F6608280FD29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{938C6B10-384E-41A1-B0C0-F6608280FD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938C6B10-384E-41A1-B0C0-F6608280FD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938C6B10-384E-41A1-B0C0-F6608280FD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938C6B10-384E-41A1-B0C0-F6608280FD29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF76B2E8-41F5-4984-A3A7-10E074D1A2F3}
+	EndGlobalSection
+EndGlobal
